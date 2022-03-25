@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 
-import React, { useState, useEffect } from "react";
-import { css } from "@emotion/react";
+import React, { useState, useEffect } from 'react';
+import { css } from '@emotion/react';
 
 interface InputProps {
   value: string;
@@ -20,7 +20,7 @@ export const Input = ({ value, onChange, ...props }: InputProps) => {
     const target = event.target as HTMLInputElement;
     setInputValue(target.value);
     onChange && onChange(target.value);
-  }
+  };
 
   return (
     <input
@@ -51,6 +51,6 @@ export const Input = ({ value, onChange, ...props }: InputProps) => {
       {...props}
     />
   );
-}
+};
 
 export default Input;

@@ -26,7 +26,8 @@ module.exports = {
     '@typescript-eslint/type-annotation-spacing': 2,
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
-    'no-multi-spaces': ['error']
+    'no-multi-spaces': ['error'],
+    'object-curly-spacing': ['error', 'always']
   },
   'ignorePatterns': ['build', 'node_modules']
 };

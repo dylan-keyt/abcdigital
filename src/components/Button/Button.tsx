@@ -1,14 +1,15 @@
-/** @jsxImportSource @emotion/react */
+/** @jsxRuntime classic */
+/** @jsx jsx */
 
 import React from 'react';
-import iconPath from './icons.svg';
-import { css } from '@emotion/react';
+import { css, jsx } from '@emotion/react';
 
 interface ButtonProps {
   onClick: () => void;
+  children: React.ReactNode;
 }
 
-export const Button = ({ onClick, ...props }: ButtonProps) => {
+export const Button = ({ onClick, children, ...props }: ButtonProps) => {
   return (
     <button
       type="button"
@@ -24,9 +25,7 @@ export const Button = ({ onClick, ...props }: ButtonProps) => {
       `}
       {...props}
     >
-      <svg viewBox="0 0 24 24" width="24" height="16">
-        <use xlinkHref={iconPath + '#dls-icon-arrow-right'} />
-      </svg>
+      {children}
     </button>
   );
 };

@@ -20,4 +20,5 @@ This file can be used to detail:
 
 ## Future improvements
 
-- Resolve underlying app config to make use of `jsxImportSource`; it would avoid the need to add `/** @jsxImportSource @emotion/react */` to the top of every component.
+- Resolve underlying app config to make use of `jsxImportSource`; it would avoid the need to specify classic JSX runtime at the top of every component.
+- Additional cleanup and documentation of configuration files.

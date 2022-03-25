@@ -1,7 +1,8 @@
-/** @jsxImportSource @emotion/react */
+/** @jsxRuntime classic */
+/** @jsx jsx */
 
 import React, { useState, useEffect } from 'react';
-import { css } from '@emotion/react';
+import { css, jsx } from '@emotion/react';
 
 interface InputProps {
   value: string;

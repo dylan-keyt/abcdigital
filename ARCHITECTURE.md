@@ -22,3 +22,5 @@ This file can be used to detail:
 
 - Resolve underlying app config to make use of `jsxImportSource`; it would avoid the need to specify classic JSX runtime at the top of every component.
 - Additional cleanup and documentation of configuration files.
+- Resolve test warnings re. `Input`.
+- Implement a better way to handle SVGs.

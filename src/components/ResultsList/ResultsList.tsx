@@ -1,16 +1,17 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 
-import React from "react";
+import React, { useCallback } from "react";
 import { css, jsx } from "@emotion/react";
 import { Item } from "../../types/search";
 
 interface ResultsList {
-  onSelect: (item: Item) => void;
+  onSelect?: (item: Item) => void;
   items: Item[];
 }
 
 export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
+  const handleOnClick = useCallback((item) => onSelect && onSelect(item), []);
   return (
     <ul
       css={css`
@@ -22,7 +23,7 @@ export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
         padding: 0;
       `}
       {...props}>
-      {items.map(function(item, index) {
+      {items.map((item, index) => {
         return (
           <li
             key={"item" + index}
@@ -31,11 +32,9 @@ export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
               margin: 0;
               padding: 0.5rem 1rem;
             `}
-            onClick={() => onSelect && onSelect(item)}
+            onClick={() => handleOnClick(item)}
           >
-            <button css={css`background: #0058cc;`}>
-              {item.name}, {item.state.abbreviation}
-            </button>
+            {item.name}, {item.state.abbreviation}
           </li>
         );
       })}

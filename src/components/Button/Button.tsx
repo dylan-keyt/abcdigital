@@ -1,8 +1,9 @@
+/** @jsxImportSource @emotion/react */
+
 import React from "react";
 import iconPath from "./icons.svg";
-import "./Button.css";
+import { css } from '@emotion/react'
 
-// TODO: (DK) Handle CSS props.
 interface ButtonProps {
   onClick: () => void;
 }
@@ -11,8 +12,16 @@ export const Button = ({ onClick, ...props }: ButtonProps) => {
   return (
     <button
       type="button"
-      className={"Button"}
       onClick={onClick}
+      css={css`
+        background: #fdc605;
+        border: none;
+
+        svg {
+          height: 1.5rem;
+          width: 1.5rem;
+        }
+      `}
       {...props}
     >
       <svg viewBox="0 0 24 24" width="24" height="16">

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "./Input.css";
+/** @jsxImportSource @emotion/react */
 
-// TODO: (DK) Handle CSS props.
+import React, { useState, useEffect } from "react";
+import { css } from "@emotion/react";
+
 interface InputProps {
   value: string;
   onChange: (value: string) => void;
@@ -23,10 +24,30 @@ export const Input = ({ value, onChange, ...props }: InputProps) => {
 
   return (
     <input
-      className={"Input"}
+      css={css`
+        border-radius: 0;
+        border: 1px solid hsl(0, 0%, 80%);
+        display: block;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0.75rem 1.5rem 0.6rem 1rem;
+        transition: box-shadow 0.2s ease-out, border-width 0.2s ease-out;
+        width: 100%;
+        
+        :focus {
+          border-color: #fdc605;
+          border-left-width: 0.5rem;
+        }
+        
+        ::placeholder {
+          color: #646464;
+          opacity: 1;
+        }      
+      `}
       type="text"
       value={inputValue}
       onChange={handleChange}
+      placeholder="type here"
       {...props}
     />
   );

@@ -14,6 +14,8 @@ const API_SAMPLE = [
 ];
 
 export const SearchBar = () => {
+  // TODO: (DK) Implement search state
+
   const handleOnClick = useCallback(() => {
     // TODO: (DK) Perform onClick logic
     alert("Hello!");

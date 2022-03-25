@@ -40,7 +40,7 @@ export const SearchBar = () => {
           <use xlinkHref={iconPath + '#dls-icon-arrow-right'} />
         </svg>
       </Button>
-      <Input onChange={handleOnChange} value="value" />
+      <Input onChange={handleOnChange} value="value" ariaLabel='Suburb search input' />
       <ResultsList onSelect={handleOnSelect} items={[]} />
     </section>
   );

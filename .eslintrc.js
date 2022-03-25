@@ -25,6 +25,8 @@ module.exports = {
     'indent': ['error', 2],
     '@typescript-eslint/type-annotation-spacing': 2,
     'quotes': ['error', 'single'],
+    'no-trailing-spaces': 'error',
+    // 'jsx-quotes': ['error', 'prefer-single'],
     'semi': ['error', 'always'],
     'no-multi-spaces': ['error'],
     'object-curly-spacing': ['error', 'always']

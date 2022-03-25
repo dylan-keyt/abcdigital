@@ -5,21 +5,23 @@ import React, { useState, useEffect } from 'react';
 import { css, jsx } from '@emotion/react';
 
 interface InputProps {
-  value: string;
-  onChange: (value: string) => void;
+  value?: string;
+  ariaLabel: string;
+  onChange?: (value: string) => void;
+  placeholder?: string;
 }
 
-export const Input = ({ value, onChange, ...props }: InputProps) => {
-  const [inputValue, setInputValue] = useState(value);
+export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: InputProps) => {
+  // const [inputValue, setInputValue] = useState(value);
 
   // Keep the current value, unless the parent component supplies a different "value" prop.
-  useEffect(() => {
-    setInputValue(value);
-  }, [value]);
+  // useEffect(() => {
+  //   setInputValue(value);
+  // }, [value]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.target as HTMLInputElement;
-    setInputValue(target.value);
+    // setInputValue(target.value);
     onChange && onChange(target.value);
   };
 
@@ -45,10 +47,11 @@ export const Input = ({ value, onChange, ...props }: InputProps) => {
           opacity: 1;
         }      
       `}
-      type="text"
-      value={inputValue}
+      type='text'
+      aria-label={ariaLabel}
+      value={value || ''}
       onChange={handleChange}
-      placeholder="type here"
+      placeholder={placeholder}
       {...props}
     />
   );

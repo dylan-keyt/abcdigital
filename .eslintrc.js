@@ -1,35 +1,35 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  'env': {
-    'browser': true,
-    'es2021': true
+  "env": {
+    "browser": true,
+    "es2021": true
   },
-  'extends': [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended'
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  'parser': '@typescript-eslint/parser',
-  'parserOptions': {
-    'ecmaFeatures': {
-      'jsx': true
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    'ecmaVersion': 'latest',
-    'sourceType': 'module'
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
-  'plugins': [
-    'react',
-    '@typescript-eslint'
+  "plugins": [
+    "react",
+    "@typescript-eslint"
   ],
-  'rules': {
-    'indent': ['error', 2],
-    '@typescript-eslint/type-annotation-spacing': 2,
-    'quotes': ['error', 'single'],
-    'no-trailing-spaces': 'error',
-    // 'jsx-quotes': ['error', 'prefer-single'],
-    'semi': ['error', 'always'],
-    'no-multi-spaces': ['error'],
-    'object-curly-spacing': ['error', 'always']
+  "rules": {
+    "indent": ["error", 2],
+    "@typescript-eslint/type-annotation-spacing": 2,
+    "quotes": ["error", "double"],
+    "no-trailing-spaces": "error",
+    "jsx-quotes": ["error", "prefer-double"],
+    "semi": ["error", "always"],
+    "no-multi-spaces": ["error"],
+    "object-curly-spacing": ["error", "always"]
   },
-  'ignorePatterns': ['build', 'node_modules']
+  "ignorePatterns": ["build", "node_modules"]
 };

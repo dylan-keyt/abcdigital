@@ -1,9 +1,9 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 
-import React from 'react';
-import { css, jsx } from '@emotion/react';
-import { Item } from '../../types/search';
+import React from "react";
+import { css, jsx } from "@emotion/react";
+import { Item } from "../../types/search";
 
 interface ResultsList {
   onSelect: (item: Item) => void;
@@ -25,7 +25,7 @@ export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
       {items.map(function(item, index) {
         return (
           <li
-            key={'item' + index}
+            key={"item" + index}
             css={css`
               line-height: 1.5rem;
               margin: 0;

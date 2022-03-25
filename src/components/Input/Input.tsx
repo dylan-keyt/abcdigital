@@ -1,8 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 
-import React, { useState, useEffect } from 'react';
-import { css, jsx } from '@emotion/react';
+import React, { useState, useEffect } from "react";
+import { css, jsx } from "@emotion/react";
 
 interface InputProps {
   value?: string;
@@ -47,9 +47,9 @@ export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: Inp
           opacity: 1;
         }      
       `}
-      type='text'
+      type="text"
       aria-label={ariaLabel}
-      value={value || ''}
+      value={value || ""}
       onChange={handleChange}
       placeholder={placeholder}
       {...props}

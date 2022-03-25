@@ -12,16 +12,16 @@ interface InputProps {
 }
 
 export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: InputProps) => {
-  // const [inputValue, setInputValue] = useState(value);
+  const [inputValue, setInputValue] = useState(value);
 
   // Keep the current value, unless the parent component supplies a different "value" prop.
-  // useEffect(() => {
-  //   setInputValue(value);
-  // }, [value]);
+  useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.target as HTMLInputElement;
-    // setInputValue(target.value);
+    setInputValue(target.value);
     onChange && onChange(target.value);
   };
 
@@ -49,7 +49,7 @@ export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: Inp
       `}
       type="text"
       aria-label={ariaLabel}
-      value={value || ""}
+      value={inputValue}
       onChange={handleChange}
       placeholder={placeholder}
       {...props}

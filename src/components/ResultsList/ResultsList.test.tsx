@@ -19,4 +19,11 @@ describe("ResultsList", () => {
     fireEvent.click(resultsList.children[0]);
     expect(onSelect).toHaveBeenCalled();
   });
+
+  it("should not render any items if there are none", () => {
+    const onSelect = jest.fn();
+    render(<ResultsList items={[]} onSelect={onSelect} />);
+
+    expect(screen.getByRole("list").firstChild).not.toBeInTheDocument();
+  });
 });

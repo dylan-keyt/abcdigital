@@ -11,7 +11,7 @@ interface ResultsList {
 }
 
 export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
-  const handleOnClick = useCallback((item) => onSelect && onSelect(item), []);
+  const handleOnClick = useCallback((item) => onSelect && onSelect(item), [onSelect]);
   return (
     <ul
       css={css`

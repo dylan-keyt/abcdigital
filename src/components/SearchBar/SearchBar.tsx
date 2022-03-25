@@ -1,47 +1,49 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { ResultsList } from "../ResultsList";
 import iconPath from "../Icons/icons.svg";
-
-const API_URL = "http://localhost:8010/proxy/suburbs.json?q=";
-
-const API_SAMPLE = [
-  { name: "Sydney South", state: { abbreviation: "NSW" } },
-  { name: "Sydney", state: { abbreviation: "NSW" } },
-  { name: "Sydney International Airport", state: { abbreviation: "NSW" } },
-  { name: "Sydney Domestic Airport", state: { abbreviation: "NSW" } },
-  { name: "Sydenham", state: { abbreviation: "VIC" } }
-];
+import { getSuburbs } from "../../api/suburbs";
 
 export const SearchBar = () => {
-  // TODO: (DK) Implement search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState(null);
+
+  const fetchSuburbs = useCallback(async () => {
+    const response = await getSuburbs(searchQuery);
+    response && setSearchResults(response.data);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    fetchSuburbs();
+  }, [fetchSuburbs, searchQuery]);
+
+  const handleOnChange = useCallback((value) => {
+    setSearchQuery(value);
+  }, []);
 
   const handleOnClick = useCallback(() => {
-    // TODO: (DK) Perform onClick logic
-    alert("Hello!");
+    alert(searchQuery);
+  }, [searchQuery]);
+
+  const handleOnSelect = useCallback((value) => {
+    setSearchQuery(value);
   }, []);
 
-  const handleOnChange = useCallback(() => {
-    // TODO: (DK) Perform onChange logic
-  }, []);
-
-  const handleOnSelect = useCallback(() => {
-    // TODO: (DK) Perform select logic
-  }, []);
+  // TODO: (DK) Implement these states in a stable manner
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error. Please try again.</p>;
 
   return (
     <section>
-      TODO: Implement a suburb autocomplete using &lt;Input /&gt;,
-      &lt;ResultsList /&gt; and &lt;Button /&gt; and data provided by the{" "}
-      <a href="http://localhost:8010/proxy/suburbs.json?q=Syd">API</a>.
-      <Button onClick={handleOnClick}>
+      <div>Suburb</div>
+      <Input onChange={handleOnChange} value={searchQuery} ariaLabel="Suburb search input" />
+      <Button onClick={handleOnClick} ariaLabel="Submit search query">
         <svg viewBox="0 0 24 24" width="24" height="16">
           <use xlinkHref={iconPath + "#dls-icon-arrow-right"} />
         </svg>
       </Button>
-      <Input onChange={handleOnChange} value="value" ariaLabel="Suburb search input" />
-      <ResultsList onSelect={handleOnSelect} items={[]} />
+      {searchResults && <ResultsList onSelect={handleOnSelect} items={searchResults} />}
     </section>
   );
 };

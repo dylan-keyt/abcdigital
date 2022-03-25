@@ -24,19 +24,24 @@ This file can be used to detail:
 
 - Resolve underlying app config to make use of `jsxImportSource`; it would avoid the need to specify classic JSX runtime at the top of every component.
 - Additional cleanup and documentation of configuration files.
-- Resolve test warnings re. `Input`.
 - Implement a better way to handle SVGs.
-- Implement error handling.
+- Implement error handling and loading states.
 - Use style props instead of hard-coded `css` with Emotion for a better developer experience.
 
 ### Accessibility
 
-- Keyboard navigation - up and down arrow keys navigate between results
-  - If the first result, pressing up takes the user back to the search bar
-  - If the last result, pressing down takes the user back to the search bar (loops around)
-- Press `esc` to close the results and return to the search input
-- Press `enter` to select and submit the data
+- Keyboard navigation - up and down arrow keys navigate between results.
+  - If the first result, pressing up takes the user back to the search bar.
+  - If the last result, pressing down takes the user back to the search bar (loops around).
+- Press `esc` to close the results and return to the search input.
+- Press `enter` to select and submit the data.
 
 ### API
 
-- Implement pagination rather than handling it on the frontend.
+- Implement customisable query parameters rather than handling it on the frontend.
+- Examples include being able to filter unique values, pagination, etc.
+
+### Tests
+
+- Resolve test warnings in `Input.tsx`.
+- Resolve minor test coverage in `SearchBar.tsx`.

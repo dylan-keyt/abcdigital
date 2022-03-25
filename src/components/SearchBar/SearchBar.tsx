@@ -1,33 +1,42 @@
+/** @jsxRuntime classic */
+/** @jsx jsx */
+
 import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
 import { ResultsList } from "../ResultsList";
 import iconPath from "../Icons/icons.svg";
 import { getSuburbs } from "../../api/suburbs";
+import { css, jsx } from "@emotion/react";
+import { NO_SUBURB_SELECTED } from "../../constants/suburbs";
+import { Item } from "../../types/search";
 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState(null);
+  const [selectedSuburb, setSelectedSuburb] = useState(NO_SUBURB_SELECTED);
+  const [searchResults, setSearchResults] = useState([]);
 
   const fetchSuburbs = useCallback(async () => {
-    const response = await getSuburbs(searchQuery);
-    response && setSearchResults(response.data);
+    const responseData = await getSuburbs(searchQuery);
+    responseData && setSearchResults(responseData);
   }, [searchQuery]);
 
   useEffect(() => {
     fetchSuburbs();
-  }, [fetchSuburbs, searchQuery]);
+  }, [fetchSuburbs]);
 
-  const handleOnChange = useCallback((value) => {
-    setSearchQuery(value);
+  const handleInputChange = useCallback((query: string) => {
+    setSearchQuery(query);
   }, []);
 
-  const handleOnClick = useCallback(() => {
-    alert(searchQuery);
-  }, [searchQuery]);
+  const handleButtonClick = useCallback(() => {
+    alert(selectedSuburb);
+  }, [selectedSuburb]);
 
-  const handleOnSelect = useCallback((value) => {
-    setSearchQuery(value);
+  const handleItemSelect = useCallback((item: Item) => {
+    const suburbText = `${item.name}, ${item.state.abbreviation}`;
+    setSearchQuery(suburbText);
+    setSelectedSuburb(suburbText);
   }, []);
 
   // TODO: (DK) Implement these states in a stable manner
@@ -36,14 +45,16 @@ export const SearchBar = () => {
 
   return (
     <section>
-      <div>Suburb</div>
-      <Input onChange={handleOnChange} value={searchQuery} ariaLabel="Suburb search input" />
-      <Button onClick={handleOnClick} ariaLabel="Submit search query">
-        <svg viewBox="0 0 24 24" width="24" height="16">
-          <use xlinkHref={iconPath + "#dls-icon-arrow-right"} />
-        </svg>
-      </Button>
-      {searchResults && <ResultsList onSelect={handleOnSelect} items={searchResults} />}
+      <div css={css`display: flex; align-items: center;`}>
+        <div>Suburb</div>
+        <Input onChange={handleInputChange} value={searchQuery} ariaLabel="Suburb search input" />
+        <Button onClick={handleButtonClick} ariaLabel="Submit search query">
+          <svg viewBox="0 0 24 24" width="24" height="16">
+            <use xlinkHref={iconPath + "#dls-icon-arrow-right"} />
+          </svg>
+        </Button>
+      </div>
+      {!!searchResults.length && <ResultsList onSelect={handleItemSelect} items={searchResults} />}
     </section>
   );
 };

@@ -12,8 +12,10 @@ const API_SAMPLE = [
   { name: "Sydenham", state: { abbreviation: "VIC" } }
 ];
 
-export default function App() {
+export const App = () => {
   return (
     <SearchBar />
   );
 }
+
+export default App;

@@ -1,22 +1,16 @@
 import React from "react";
+import { Item } from "../../types/search";
 import "./ResultsList.css";
 
-/**
- * <ResultsList
- *   items={[...]}
- *   onSelect={item => console.log(item.name)}
- *   className="MyResultsList"
- * />
- *
- * @prop {Array} items List of results of form { name: string, state: { abbreviation: string } }
- * @prop {Function} onSelect Callback to execute when item is selected, accepts object.
- * @prop {mixed} ... All other props will be forwarded to the container DOM node.
- */
-export function ResultsList(props) {
-  const { className, onSelect, items, ...otherProps } = props;
+// TODO: (DK) Handle CSS props.
+interface ResultsList {
+  onSelect: (item: Item) => void;
+  items: Item[];
+}
 
+export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
   return (
-    <ul className={"ResultsList " + (className || "")} {...otherProps}>
+    <ul className={"ResultsList"} {...props}>
       {items.map(function(item, index) {
         return (
           <li
@@ -33,3 +27,5 @@ export function ResultsList(props) {
     </ul>
   );
 }
+
+export default ResultsList;

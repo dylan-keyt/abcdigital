@@ -7,9 +7,20 @@ import { Input } from "../Input";
 import { ResultsList } from "../ResultsList";
 import iconPath from "../Icons/icons.svg";
 import { getSuburbs } from "../../api/suburbs";
+import styled from "@emotion/styled";
 import { css, jsx } from "@emotion/react";
 import { NO_SUBURB_SELECTED } from "../../constants/suburbs";
 import { Item } from "../../types/search";
+
+const SearchSection = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SearchBarGroup = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,18 +55,37 @@ export const SearchBar = () => {
   // if (error) return <p>Error. Please try again.</p>;
 
   return (
-    <section>
-      <div css={css`display: flex; align-items: center;`}>
-        <div>Suburb</div>
-        <Input onChange={handleInputChange} value={searchQuery} ariaLabel="Suburb search input" />
-        <Button onClick={handleButtonClick} ariaLabel="Submit search query">
+    <SearchSection>
+      <SearchBarGroup>
+        <div css={css`width: 10%;`}>
+          Suburb
+        </div>
+        <Input
+          onChange={handleInputChange}
+          value={searchQuery}
+          ariaLabel="Suburb search input"
+          marginRight="-38px"
+        />
+        <Button
+          onClick={handleButtonClick}
+          ariaLabel="Submit search query"
+          height="42px;"
+        >
           <svg viewBox="0 0 24 24" width="24" height="16">
             <use xlinkHref={iconPath + "#dls-icon-arrow-right"} />
           </svg>
         </Button>
-      </div>
-      {!!searchResults.length && <ResultsList onSelect={handleItemSelect} items={searchResults} />}
-    </section>
+      </SearchBarGroup>
+      {
+        !!searchResults.length &&
+        <ResultsList
+          onSelect={handleItemSelect}
+          items={searchResults}
+          width="91.3%"
+          alignSelf="flex-end"
+        />
+      }
+    </SearchSection>
   );
 };
 

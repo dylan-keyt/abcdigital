@@ -8,9 +8,16 @@ interface ButtonProps {
   onClick: () => void;
   ariaLabel?: string;
   children?: React.ReactNode;
+  height?: string;
 }
 
-export const Button = ({ onClick, ariaLabel, children, ...props }: ButtonProps) => {
+export const Button = ({
+  onClick,
+  ariaLabel,
+  children,
+  height,
+  ...props
+}: ButtonProps) => {
   return (
     <button
       type="button"
@@ -19,6 +26,7 @@ export const Button = ({ onClick, ariaLabel, children, ...props }: ButtonProps) 
       css={css`
         background: #fdc605;
         border: none;
+        ${height && `height: ${height};`}
 
         svg {
           height: 1.5rem;

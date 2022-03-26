@@ -9,12 +9,19 @@ interface InputProps {
   ariaLabel: string;
   onChange?: (value: string) => void;
   placeholder?: string;
+  marginRight?: string;
 }
 
-export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: InputProps) => {
+export const Input = ({
+  value,
+  onChange,
+  placeholder,
+  ariaLabel,
+  marginRight,
+  ...props
+}: InputProps) => {
   const [inputValue, setInputValue] = useState(value);
 
-  // Keep the current value, unless the parent component supplies a different "value" prop.
   useEffect(() => {
     setInputValue(value);
   }, [value]);
@@ -36,6 +43,7 @@ export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: Inp
         padding: 0.75rem 1.5rem 0.6rem 1rem;
         transition: box-shadow 0.2s ease-out, border-width 0.2s ease-out;
         width: 100%;
+        ${marginRight && `margin-right: ${marginRight};`}
         
         :focus {
           border-color: #fdc605;
@@ -45,7 +53,7 @@ export const Input = ({ value, onChange, placeholder, ariaLabel, ...props }: Inp
         ::placeholder {
           color: #646464;
           opacity: 1;
-        }      
+        }
       `}
       type="text"
       aria-label={ariaLabel}

@@ -8,10 +8,21 @@ import { Item } from "../../types/search";
 interface ResultsList {
   onSelect?: (item: Item) => void;
   items: Item[];
+  width?: string;
+  alignSelf?: string;
 }
 
-export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
-  const handleOnClick = useCallback((item) => onSelect && onSelect(item), [onSelect]);
+export const ResultsList = ({
+  onSelect,
+  items,
+  width,
+  alignSelf,
+  ...props
+}: ResultsList) => {
+  const handleOnClick = useCallback(
+    (item) => onSelect && onSelect(item), [onSelect]
+  );
+
   return (
     <ul
       css={css`
@@ -21,6 +32,8 @@ export const ResultsList = ({ onSelect, items, ...props }: ResultsList) => {
         list-style: none;
         margin: 0;
         padding: 0;
+        ${width && `width: ${width};`}
+        ${alignSelf && `align-self: ${alignSelf};`}
       `}
       {...props}>
       {items.map((item, index) => {

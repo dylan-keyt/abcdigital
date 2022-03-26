@@ -26,7 +26,9 @@ This file can be used to detail:
 - Additional cleanup and documentation of configuration files.
 - Implement a better way to handle SVGs.
 - Implement error handling and loading states.
-- Use style props instead of hard-coded `css` with Emotion for a better developer experience.
+- Use [object styles](https://emotion.sh/docs/object-styles) instead of hard-coded `css` with Emotion for a better developer experience.
+  - When refactoring, I could not overcome a `kebab-case` related error when running the tests.
+- Fix styling issue with button via dynamic styles (e.g. onInputFocus).
 
 ### Accessibility
 

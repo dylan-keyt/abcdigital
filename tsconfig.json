@@ -2,6 +2,7 @@
   "exclude": [
     "node_modules",
     "build",
+    "coverage",
     "**/*/test.ts",
     "**/*/test.tsx"
   ],
@@ -33,6 +34,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
   }
 }

@@ -4,7 +4,13 @@ import Input from "./Input";
 
 describe("Input", () => {
   it("should render with a passed value and placeholder text", () => {
-    render(<Input value="test value" ariaLabel="search input" placeholder="Search..." />);
+    render(
+      <Input
+        value="test value"
+        ariaLabel="search input"
+        placeholder="Search..."
+      />
+    );
 
     const input = screen.getByRole("textbox", { name: /search input/i });
     expect(input).toBeVisible();

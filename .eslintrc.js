@@ -23,7 +23,7 @@ module.exports = {
     "@typescript-eslint"
   ],
   "rules": {
-    "max-len": ["error", { "code": 80 }],
+    "max-len": ["error", { "code": 100 }],
     "indent": ["error", 2],
     "@typescript-eslint/type-annotation-spacing": 2,
     "quotes": ["error", "double"],

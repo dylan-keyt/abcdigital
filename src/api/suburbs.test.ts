@@ -19,7 +19,7 @@ describe("getSuburbs", () => {
     mockAxios.reset();
   });
 
-  it("should only return a max of 5 suggestions which start with the search input value", async () => {
+  it("should only return a max of 5 results which start with the search input value", async () => {
     mockAxios.get.mockResolvedValue({ data: mockItems });
 
     const result = await getSuburbs("syd");

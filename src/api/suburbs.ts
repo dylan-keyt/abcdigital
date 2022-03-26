@@ -26,6 +26,7 @@ export const getSuburbs = async (query: string) => {
       }, []);
   }
   catch (error) {
+    // TODO: (DK) Implement proper error handling.
     console.error(error);
   }
 };

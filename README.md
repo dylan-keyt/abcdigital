@@ -12,13 +12,8 @@ To get the app running, run these commands inside the terminal:
 
     git clone https://github.com/dylan-keyt/abcdigital.git
     cd abcdigital
-    git checkout dylan-keyt-code-submission
     npm install
     npm start
-
-Please note that the modified code can be found on the `dylan-keyt-code-submission` branch.
-
-This was done in order to have an easier time viewing differences to `master`.
 
 ### Node version
 

@@ -14,11 +14,26 @@ import { Item } from "../../types/search";
 
 const SearchSection = styled.section`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+`;
+
+const SuburbLabel = styled.div`
+  width: 10%;
+  min-width: 80px;
+  align-self: flex-start;
+  padding-top: 12px;
+`;
+
+const Flex = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
 `;
 
 const SearchBarGroup = styled.div`
   display: flex;
+  width: 90%;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -56,35 +71,33 @@ export const SearchBar = () => {
 
   return (
     <SearchSection>
+      <SuburbLabel>Suburb</SuburbLabel>
       <SearchBarGroup>
-        <div css={css`width: 10%;`}>
-          Suburb
-        </div>
-        <Input
-          onChange={handleInputChange}
-          value={searchQuery}
-          ariaLabel="Suburb search input"
-          marginRight="-38px"
-        />
-        <Button
-          onClick={handleButtonClick}
-          ariaLabel="Submit search query"
-          height="42px;"
-        >
-          <svg viewBox="0 0 24 24" width="24" height="16">
-            <use xlinkHref={iconPath + "#dls-icon-arrow-right"} />
-          </svg>
-        </Button>
+        <Flex>
+          <Input
+            onChange={handleInputChange}
+            value={searchQuery}
+            ariaLabel="Suburb search input"
+            marginRight="-38px"
+          />
+          <Button
+            onClick={handleButtonClick}
+            ariaLabel="Submit search query"
+            height="42px;"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="16">
+              <use xlinkHref={iconPath + "#dls-icon-arrow-right"} />
+            </svg>
+          </Button>
+        </Flex>
+        {
+          !!searchResults.length &&
+          <ResultsList
+            onSelect={handleItemSelect}
+            items={searchResults}
+          />
+        }
       </SearchBarGroup>
-      {
-        !!searchResults.length &&
-        <ResultsList
-          onSelect={handleItemSelect}
-          items={searchResults}
-          width="91.3%"
-          alignSelf="flex-end"
-        />
-      }
     </SearchSection>
   );
 };

@@ -77,12 +77,12 @@ export const SearchBar = () => {
           <Input
             onChange={handleInputChange}
             value={searchQuery}
-            ariaLabel="Suburb search input"
+            aria-label="Suburb search input"
             marginRight="-38px"
           />
           <Button
             onClick={handleButtonClick}
-            ariaLabel="Submit search query"
+            aria-label="Submit search query"
             height="42px;"
           >
             <svg viewBox="0 0 24 24" width="24" height="16">

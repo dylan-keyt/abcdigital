@@ -6,14 +6,13 @@ import { css, jsx } from "@emotion/react";
 
 interface ButtonProps {
   onClick: () => void;
-  ariaLabel?: string;
   children?: React.ReactNode;
   height?: string;
+  props?: JSX.IntrinsicElements["button"];
 }
 
 export const Button = ({
   onClick,
-  ariaLabel,
   children,
   height,
   ...props
@@ -22,7 +21,6 @@ export const Button = ({
     <button
       type="button"
       onClick={onClick}
-      aria-label={ariaLabel}
       css={css`
         background: #fdc605;
         border: none;

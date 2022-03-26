@@ -6,17 +6,16 @@ import { css, jsx } from "@emotion/react";
 
 interface InputProps {
   value?: string;
-  ariaLabel: string;
   onChange?: (value: string) => void;
   placeholder?: string;
   marginRight?: string;
+  props?: JSX.IntrinsicElements["input"];
 }
 
 export const Input = ({
   value,
   onChange,
   placeholder,
-  ariaLabel,
   marginRight,
   ...props
 }: InputProps) => {
@@ -56,7 +55,6 @@ export const Input = ({
         }
       `}
       type="text"
-      aria-label={ariaLabel}
       value={inputValue}
       onChange={handleChange}
       placeholder={placeholder}

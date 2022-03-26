@@ -13,11 +13,4 @@ describe("Button", () => {
     fireEvent.click(button);
     expect(onClick).toBeCalled();
   });
-
-  it("should render with an aria label, regardless of child content", () => {
-    const onClick = jest.fn();
-    render(<Button ariaLabel="click me" onClick={onClick} />);
-
-    expect(screen.getByRole("button", { name: /Click me/i })).toBeVisible();
-  });
 });

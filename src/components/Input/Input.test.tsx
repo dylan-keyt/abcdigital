@@ -7,7 +7,7 @@ describe("Input", () => {
     render(
       <Input
         value="test value"
-        ariaLabel="search input"
+        aria-label="search input"
         placeholder="Search..."
       />
     );
@@ -20,7 +20,7 @@ describe("Input", () => {
 
   it("should call onChange with a new value", () => {
     const onChange = jest.fn();
-    render(<Input ariaLabel="search input" onChange={onChange} />);
+    render(<Input aria-label="search input" onChange={onChange} />);
 
     const input = screen.getByRole("textbox", { name: /search input/i });
     expect(input).toBeVisible();

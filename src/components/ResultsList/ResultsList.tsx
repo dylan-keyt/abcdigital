@@ -8,6 +8,7 @@ import { Item } from "../../types/search";
 interface ResultsList {
   onSelect?: (item: Item) => void;
   items: Item[];
+  props?: JSX.IntrinsicElements["ul"];
 }
 
 export const ResultsList = ({

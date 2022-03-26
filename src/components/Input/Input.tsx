@@ -26,7 +26,7 @@ const StyledInput = styled.input((props: InputProps) => ({
   "::placeholder": {
     color: "#646464",
     opacity: 1,
-  }
+  },
 }));
 
 export const Input = ({

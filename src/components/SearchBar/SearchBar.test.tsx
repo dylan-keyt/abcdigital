@@ -5,9 +5,7 @@ import mockAxios from "jest-mock-axios";
 import { act } from "react-dom/test-utils";
 import { NO_SUBURB_SELECTED } from "../../constants/suburbs";
 
-const mockItems = [
-  { name: "Aldersyde", state: { abbreviation: "WA" } }
-];
+const mockItems = [{ name: "Aldersyde", state: { abbreviation: "WA" } }];
 
 describe("SearchBar", () => {
   afterEach(() => {
@@ -18,7 +16,9 @@ describe("SearchBar", () => {
     const alertMock = jest.spyOn(window, "alert").mockImplementation();
     render(<SearchBar />);
     expect(screen.getByText(/Suburb/i)).toBeVisible();
-    expect(screen.getByRole("textbox", { name: /Suburb search input/i })).toBeVisible();
+    expect(
+      screen.getByRole("textbox", { name: /Suburb search input/i })
+    ).toBeVisible();
     expect(screen.queryByRole("list")).not.toBeInTheDocument();
 
     const button = screen.getByRole("button", { name: /Submit search query/i });
@@ -50,7 +50,9 @@ describe("SearchBar", () => {
     expect(input).toHaveAttribute("value", "Aldersyde, WA");
 
     // Submit button triggers alert
-    fireEvent.click(screen.getByRole("button", { name: /Submit search query/i }));
+    fireEvent.click(
+      screen.getByRole("button", { name: /Submit search query/i })
+    );
     expect(alertMock).toBeCalledWith("Aldersyde, WA");
   });
 });

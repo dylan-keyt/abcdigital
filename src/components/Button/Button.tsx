@@ -15,7 +15,7 @@ const StyledButton = styled.button((props: ButtonProps) => ({
   svg: {
     height: "1.5rem",
     width: "1.5rem",
-  }
+  },
 }));
 
 export const Button = ({
@@ -25,12 +25,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <StyledButton
-      type="button"
-      onClick={onClick}
-      height={height}
-      {...props}
-    >
+    <StyledButton type="button" onClick={onClick} height={height} {...props}>
       {children}
     </StyledButton>
   );

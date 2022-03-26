@@ -10,14 +10,14 @@ import { Item } from "../../types/search";
 
 const SearchSection = styled.section(() => ({
   display: "flex",
-  alignItems: "center"
+  alignItems: "center",
 }));
 
 const SuburbLabel = styled.div(() => ({
   width: "10%",
   minWidth: "80px",
   alignSelf: "flex-start",
-  paddingTop: "12px"
+  paddingTop: "12px",
 }));
 
 const SearchBarWrapper = styled.div(() => ({
@@ -47,10 +47,13 @@ export const SearchBar = () => {
     fetchSuburbs();
   }, [fetchSuburbs]);
 
-  const handleInputChange = useCallback((event: React.FormEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement;
-    setSearchQuery(target.value);
-  }, []);
+  const handleInputChange = useCallback(
+    (event: React.FormEvent<HTMLInputElement>) => {
+      const target = event.target as HTMLInputElement;
+      setSearchQuery(target.value);
+    },
+    []
+  );
 
   const handleButtonClick = useCallback(() => {
     alert(selectedSuburb);
@@ -87,13 +90,9 @@ export const SearchBar = () => {
             </svg>
           </Button>
         </Flex>
-        {
-          !!searchResults.length &&
-          <ResultsList
-            onSelect={handleItemSelect}
-            items={searchResults}
-          />
-        }
+        {!!searchResults.length && (
+          <ResultsList onSelect={handleItemSelect} items={searchResults} />
+        )}
       </SearchBarWrapper>
     </SearchSection>
   );

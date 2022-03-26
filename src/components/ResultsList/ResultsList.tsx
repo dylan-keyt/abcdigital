@@ -15,13 +15,13 @@ const ResultsListWrapper = styled.ul(() => ({
   listStyle: "none",
   margin: 0,
   padding: 0,
-  width: "100%"
+  width: "100%",
 }));
 
 const ListItem = styled.li(() => ({
   lineHeight: "1.5rem",
   margin: 0,
-  padding: "0.5rem 1rem"
+  padding: "0.5rem 1rem",
 }));
 
 export const ResultsList = ({
@@ -30,17 +30,15 @@ export const ResultsList = ({
   ...props
 }: ResultsListProps) => {
   const handleOnClick = useCallback(
-    (item) => onSelect && onSelect(item), [onSelect]
+    (item) => onSelect && onSelect(item),
+    [onSelect]
   );
 
   return (
     <ResultsListWrapper {...props}>
       {items.map((item, index) => {
         return (
-          <ListItem
-            key={"item" + index}
-            onClick={() => handleOnClick(item)}
-          >
+          <ListItem key={"item" + index} onClick={() => handleOnClick(item)}>
             {item.name}, {item.state.abbreviation}
           </ListItem>
         );

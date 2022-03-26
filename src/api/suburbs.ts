@@ -12,20 +12,24 @@ const matchStartOfName = (item: Item, query: string) => {
 export const getSuburbs = async (query: string) => {
   try {
     const response = await axios.get(`${SUBURBS_ENDPOINT}?q=${query}`);
-    return response?.data
-      // TODO: (DK) Filter unique values.
-      .filter((item: Item) => matchStartOfName(item, query))
-      .slice(0, MAX_RESULTS)
-      .reduce((acc: Item[], item: Item) => {
-        return [...acc, {
-          name: item.name,
-          state: {
-            abbreviation: item.state.abbreviation
-          }
-        }];
-      }, []);
-  }
-  catch (error) {
+    return (
+      response?.data
+        // TODO: (DK) Filter unique values.
+        .filter((item: Item) => matchStartOfName(item, query))
+        .slice(0, MAX_RESULTS)
+        .reduce((acc: Item[], item: Item) => {
+          return [
+            ...acc,
+            {
+              name: item.name,
+              state: {
+                abbreviation: item.state.abbreviation,
+              },
+            },
+          ];
+        }, [])
+    );
+  } catch (error) {
     // TODO: (DK) Implement proper error handling.
     console.error(error);
   }

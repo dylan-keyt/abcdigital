@@ -4,7 +4,7 @@ import { ResultsList } from "./ResultsList";
 
 const mockItems = [
   { name: "Sydney South", state: { abbreviation: "NSW" } },
-  { name: "Sydenham", state: { abbreviation: "VIC" } }
+  { name: "Sydenham", state: { abbreviation: "VIC" } },
 ];
 
 describe("ResultsList", () => {

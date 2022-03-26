@@ -13,6 +13,7 @@
     "start": "concurrently --names 'WEB,API' -c 'bgBlue.bold,bgMagenta.bold' 'npm:dev-server' 'npm:api-proxy'",
     "build": "tsc",
     "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "test": "jest",
     "dev-server": "react-scripts start",
     "api-proxy": "lcp --proxyUrl http://v0.postcodeapi.com.au"
@@ -40,7 +41,10 @@
     "@types/react-dom": "^17.0.14",
     "@typescript-eslint/parser": "^5.16.0",
     "concurrently": "^6.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "prettier": "^2.6.1",
     "jest": "^27.5.1",
     "jest-mock-axios": "^4.5.0",
     "jest-svg-transformer": "^1.0.0",

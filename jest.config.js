@@ -7,5 +7,5 @@ module.exports = {
     "^.+\\.svg$": "jest-svg-transformer",
   },
   setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
-  testEnvironment: "jest-environment-jsdom"
+  testEnvironment: "jest-environment-jsdom",
 };

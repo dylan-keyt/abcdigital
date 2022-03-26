@@ -31,14 +31,26 @@ describe("getSuburbs", () => {
       { name: "Sydney", state: { abbreviation: "NSW" } },
       { name: "Sydney Domestic Airport", state: { abbreviation: "NSW" } },
       { name: "Sydney International Airport", state: { abbreviation: "NSW" } },
-      { name: "Sydenham", state: { abbreviation: "VIC" } }
+      { name: "Sydenham", state: { abbreviation: "VIC" } },
     ]);
 
     // No match
-    expect(result).not.toContain({ name: "Sydney Markets", state: { abbreviation: "NSW" } });
-    expect(result).not.toContain({ name: "Aldersyde", state: { abbreviation: "WA" } });
-    expect(result).not.toContain({ name: "Melbourne", state: { abbreviation: "VIC" } });
-    expect(result).not.toContain({ name: "University of Sydney", state: { abbreviation: "NSW" } });
+    expect(result).not.toContain({
+      name: "Sydney Markets",
+      state: { abbreviation: "NSW" },
+    });
+    expect(result).not.toContain({
+      name: "Aldersyde",
+      state: { abbreviation: "WA" },
+    });
+    expect(result).not.toContain({
+      name: "Melbourne",
+      state: { abbreviation: "VIC" },
+    });
+    expect(result).not.toContain({
+      name: "University of Sydney",
+      state: { abbreviation: "NSW" },
+    });
 
     // No results, return empty array
     expect(await getSuburbs("brisbane")).toEqual([]);

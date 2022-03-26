@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
-interface InputProps {
+type InputProps = {
   value?: string;
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   placeholder?: string;
   marginRight?: string;
-  props?: JSX.IntrinsicElements["input"];
-}
+} & JSX.IntrinsicElements["input"];
 
 const StyledInput = styled.input((props: InputProps) => ({
   borderRadius: 0,

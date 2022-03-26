@@ -2,11 +2,10 @@ import React, { useCallback } from "react";
 import { Item } from "../../types/search";
 import styled from "@emotion/styled";
 
-interface ResultsListProps {
+type ResultsListProps = {
   onSelect?: (item: Item) => void;
   items: Item[];
-  props?: JSX.IntrinsicElements["ul"];
-}
+} & Omit<JSX.IntrinsicElements["ul"], "onSelect">;
 
 const ResultsListWrapper = styled.ul(() => ({
   background: "white",

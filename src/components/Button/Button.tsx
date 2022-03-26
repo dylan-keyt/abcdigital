@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-interface ButtonProps {
+type ButtonProps = {
   onClick: () => void;
   children?: React.ReactNode;
   height?: string;
-  props?: JSX.IntrinsicElements["button"];
-}
+} & JSX.IntrinsicElements["button"];
 
 const StyledButton = styled.button((props: ButtonProps) => ({
   background: "#fdc605",

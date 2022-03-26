@@ -15,6 +15,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "test": "jest",
+    "test-watch": "jest --watch",
     "dev-server": "react-scripts start",
     "api-proxy": "lcp --proxyUrl http://v0.postcodeapi.com.au"
   },

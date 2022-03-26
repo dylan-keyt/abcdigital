@@ -29,6 +29,7 @@ Here are my notes on the following:
   - When refactoring, I could not overcome a `kebab-case` related error when running the tests.
   - This is likely due to misaligned config in Babel/Jest/TSConfig.
 - Fix styling issue with button via dynamic styles (e.g. onInputFocus).
+- Fix styling issue with results list (background grey expands).
 
 ### Accessibility
 

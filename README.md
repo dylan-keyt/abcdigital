@@ -27,7 +27,9 @@ The `package.json` file has been updated with more commands to use.
 - `npm start` - runs the local development server in addition to the proxy server on port `8010`
 - `npm run build` - runs the TypeScript compiler (`noEmit: true` flag currently prevents output)
 - `npm run lint` - runs ESLint for root directory
+- `npm run lint-fix` - runs ESLint and fixes all auto-fixable issues
 - `npm run test` - runs unit tests with Jest and React Testing Library
+- `npm run test-watch` - runs Jest in the watch mode, will re-run if files or tests are changed
 
 ## Support
 

@@ -27,6 +27,8 @@ describe("Input", () => {
 
     fireEvent.change(input, { target: { value: "test" } });
     expect(input).toHaveAttribute("value", "test");
-    expect(onChange).toHaveBeenCalledWith("test");
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining({ target: input })
+    );
   });
 });

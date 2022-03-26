@@ -1,16 +1,33 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-
 import React, { useState, useEffect } from "react";
-import { css, jsx } from "@emotion/react";
+import styled from "@emotion/styled";
 
 interface InputProps {
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   placeholder?: string;
   marginRight?: string;
   props?: JSX.IntrinsicElements["input"];
 }
+
+const StyledInput = styled.input((props: InputProps) => ({
+  borderRadius: 0,
+  border: "1px solid hsl(0, 0%, 80%)",
+  display: "block",
+  fontSize: "1rem",
+  margin: 0,
+  padding: "0.75rem 1.5rem 0.6rem 1rem",
+  transition: "box-shadow 0.2s ease-out, border-width 0.2s ease-out",
+  width: "100%",
+  marginRight: props.marginRight,
+  ":focus": {
+    borderColor: "#fdc605",
+    borderLeftWidth: "0.5rem",
+  },
+  "::placeholder": {
+    color: "#646464",
+    opacity: 1,
+  }
+}));
 
 export const Input = ({
   value,
@@ -28,32 +45,12 @@ export const Input = ({
   const handleChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const target = event.target as HTMLInputElement;
     setInputValue(target.value);
-    onChange && onChange(target.value);
+    onChange && onChange(event);
   };
 
   return (
-    <input
-      css={css`
-        border-radius: 0;
-        border: 1px solid hsl(0, 0%, 80%);
-        display: block;
-        font-size: 1rem;
-        margin: 0;
-        padding: 0.75rem 1.5rem 0.6rem 1rem;
-        transition: box-shadow 0.2s ease-out, border-width 0.2s ease-out;
-        width: 100%;
-        ${marginRight && `margin-right: ${marginRight};`}
-        
-        :focus {
-          border-color: #fdc605;
-          border-left-width: 0.5rem;
-        }
-        
-        ::placeholder {
-          color: #646464;
-          opacity: 1;
-        }
-      `}
+    <StyledInput
+      marginRight={marginRight}
       type="text"
       value={inputValue}
       onChange={handleChange}

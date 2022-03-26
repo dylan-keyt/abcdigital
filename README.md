@@ -2,7 +2,7 @@
 
 ## Summary
 
-This is my submission for ABC's coding exercise. I spent one and a half days working on it, give or take.
+This is my submission for ABC's coding exercise. I spent a couple of days working on it, give or take.
 
 Please see [ARCHITECTURE.md](./ARCHITECTURE.md) for more information on tech decisions and what I would aim to achieve with more time.
 

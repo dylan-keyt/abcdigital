@@ -1,6 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-
 import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Input } from "../Input";
@@ -8,34 +5,33 @@ import { ResultsList } from "../ResultsList";
 import iconPath from "../Icons/icons.svg";
 import { getSuburbs } from "../../api/suburbs";
 import styled from "@emotion/styled";
-import { css, jsx } from "@emotion/react";
 import { NO_SUBURB_SELECTED } from "../../constants/suburbs";
 import { Item } from "../../types/search";
 
-const SearchSection = styled.section`
-  display: flex;
-  align-items: center;
-`;
+const SearchSection = styled.section(() => ({
+  display: "flex",
+  alignItems: "center"
+}));
 
-const SuburbLabel = styled.div`
-  width: 10%;
-  min-width: 80px;
-  align-self: flex-start;
-  padding-top: 12px;
-`;
+const SuburbLabel = styled.div(() => ({
+  width: "10%",
+  minWidth: "80px",
+  alignSelf: "flex-start",
+  paddingTop: "12px"
+}));
 
-const Flex = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-`;
+const SearchBarWrapper = styled.div(() => ({
+  display: "flex",
+  width: "90%",
+  flexDirection: "column",
+  alignItems: "center",
+}));
 
-const SearchBarGroup = styled.div`
-  display: flex;
-  width: 90%;
-  flex-direction: column;
-  align-items: center;
-`;
+const Flex = styled.div(() => ({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+}));
 
 export const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -51,8 +47,9 @@ export const SearchBar = () => {
     fetchSuburbs();
   }, [fetchSuburbs]);
 
-  const handleInputChange = useCallback((query: string) => {
-    setSearchQuery(query);
+  const handleInputChange = useCallback((event: React.FormEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+    setSearchQuery(target.value);
   }, []);
 
   const handleButtonClick = useCallback(() => {
@@ -72,7 +69,7 @@ export const SearchBar = () => {
   return (
     <SearchSection>
       <SuburbLabel>Suburb</SuburbLabel>
-      <SearchBarGroup>
+      <SearchBarWrapper>
         <Flex>
           <Input
             onChange={handleInputChange}
@@ -97,7 +94,7 @@ export const SearchBar = () => {
             items={searchResults}
           />
         }
-      </SearchBarGroup>
+      </SearchBarWrapper>
     </SearchSection>
   );
 };

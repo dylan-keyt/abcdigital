@@ -15,7 +15,6 @@
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "outDir": "./build",
     "target": "es5",
     "lib": [

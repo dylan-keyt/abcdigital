@@ -1,8 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-
 import React from "react";
-import { css, jsx } from "@emotion/react";
+import styled from "@emotion/styled";
 
 interface ButtonProps {
   onClick: () => void;
@@ -11,6 +8,16 @@ interface ButtonProps {
   props?: JSX.IntrinsicElements["button"];
 }
 
+const StyledButton = styled.button((props: ButtonProps) => ({
+  background: "#fdc605",
+  border: "none",
+  height: props.height,
+  svg: {
+    height: "1.5rem",
+    width: "1.5rem",
+  }
+}));
+
 export const Button = ({
   onClick,
   children,
@@ -18,23 +25,14 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <button
+    <StyledButton
       type="button"
       onClick={onClick}
-      css={css`
-        background: #fdc605;
-        border: none;
-        ${height && `height: ${height};`}
-
-        svg {
-          height: 1.5rem;
-          width: 1.5rem;
-        }
-      `}
+      height={height}
       {...props}
     >
       {children}
-    </button>
+    </StyledButton>
   );
 };
 

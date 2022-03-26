@@ -1,53 +1,51 @@
-/** @jsxRuntime classic */
-/** @jsx jsx */
-
 import React, { useCallback } from "react";
-import { css, jsx } from "@emotion/react";
 import { Item } from "../../types/search";
+import styled from "@emotion/styled";
 
-interface ResultsList {
+interface ResultsListProps {
   onSelect?: (item: Item) => void;
   items: Item[];
   props?: JSX.IntrinsicElements["ul"];
 }
 
+const ResultsListWrapper = styled.ul(() => ({
+  background: "white",
+  border: "1px solid hsl(0, 0%, 80%)",
+  boxShadow: "0.5rem 0.5rem 1rem hsl(0, 0%, 90%)",
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
+  width: "100%"
+}));
+
+const ListItem = styled.li(() => ({
+  lineHeight: "1.5rem",
+  margin: 0,
+  padding: "0.5rem 1rem"
+}));
+
 export const ResultsList = ({
   onSelect,
   items,
   ...props
-}: ResultsList) => {
+}: ResultsListProps) => {
   const handleOnClick = useCallback(
     (item) => onSelect && onSelect(item), [onSelect]
   );
 
   return (
-    <ul
-      css={css`
-        background: white;
-        border: 1px solid hsl(0, 0%, 80%);
-        box-shadow: 0.5rem 0.5rem 1rem hsl(0, 0%, 90%);
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      `}
-      {...props}>
+    <ResultsListWrapper {...props}>
       {items.map((item, index) => {
         return (
-          <li
+          <ListItem
             key={"item" + index}
-            css={css`
-              line-height: 1.5rem;
-              margin: 0;
-              padding: 0.5rem 1rem;
-            `}
             onClick={() => handleOnClick(item)}
           >
             {item.name}, {item.state.abbreviation}
-          </li>
+          </ListItem>
         );
       })}
-    </ul>
+    </ResultsListWrapper>
   );
 };
 

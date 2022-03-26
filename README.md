@@ -20,6 +20,12 @@ Please note that the modified code can be found on the `dylan-keyt-code-submissi
 
 This was done in order to have an easier time viewing differences to `master`.
 
+### Node version
+
+This app has been tested with Node `v16.14.2`, which is the latest LTS version at the time of development.
+
+If you encounter any issues with setup, please ensure you are using this version.
+
 ## Commands
 
 The `package.json` file has been updated with more commands to use.

@@ -8,6 +8,8 @@ type ResultsListProps = {
 } & Omit<JSX.IntrinsicElements["ul"], "onSelect">;
 
 const ResultsListWrapper = styled.ul(() => ({
+  position: "absolute",
+  top: "45px",
   background: "white",
   border: "1px solid hsl(0, 0%, 80%)",
   boxShadow: "0.5rem 0.5rem 1rem hsl(0, 0%, 90%)",

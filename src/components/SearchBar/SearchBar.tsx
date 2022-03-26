@@ -21,6 +21,7 @@ const SuburbLabel = styled.div(() => ({
 }));
 
 const SearchBarWrapper = styled.div(() => ({
+  position: "relative",
   display: "flex",
   width: "90%",
   flexDirection: "column",

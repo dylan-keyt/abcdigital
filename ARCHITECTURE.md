@@ -1,9 +1,9 @@
 # Architecture
 
-This file can be used to detail:
+Here are my notes on the following:
 
-* Architecture decisions.
-* Future implementation details that cannot (or should not!) be attempted in the alotted time.
+* Architecture decisions
+* Future implementation details that could not be completed in the alotted time.
 
 ## Tech/library decisions
 
@@ -12,7 +12,7 @@ This file can be used to detail:
 - React Testing Library to verify requirements and write minimal code.
 - Emotion for CSS-in-JSX.
 
-## File structure
+### File structure notes
 
 - The components `Button` and `Input` could be moved to a shared component library for reuse with other larger components.
 - Refactored `.js` files to `.tsx` to gain benefits from both a component creation and TS validation standpoint.
@@ -28,6 +28,7 @@ This file can be used to detail:
 - Implement error handling and loading states.
 - Use [object styles](https://emotion.sh/docs/object-styles) instead of hard-coded `css` with Emotion for a better developer experience.
   - When refactoring, I could not overcome a `kebab-case` related error when running the tests.
+  - This is likely due to misaligned config in Babel/Jest/TSConfig.
 - Fix styling issue with button via dynamic styles (e.g. onInputFocus).
 
 ### Accessibility
@@ -47,3 +48,4 @@ This file can be used to detail:
 
 - Resolve test warnings in `Input.tsx`.
 - Resolve minor test coverage in `SearchBar.tsx`.
+- Add loading/error handling, and add tests for them.
